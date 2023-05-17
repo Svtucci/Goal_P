@@ -60,7 +60,7 @@ function RegisterForm() {
         <label htmlFor="dailyGoal">
           Daily Goal
           <input
-            type="goal"
+            type="integer"
             name="dailyGoal"
             value={dailyGoal}
             required
