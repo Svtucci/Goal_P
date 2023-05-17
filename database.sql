@@ -15,7 +15,7 @@ CREATE TABLE "user" (
 CREATE TABLE "user" (
     "id" SERIAL PRIMARY KEY,
     "username" VARCHAR (15) NOT NULL,
-    "password" VARCHAR (15) NOT NULL,
+    "password" VARCHAR (1000) NOT NULL,
     "daily_goal" INTEGER 
 );
 

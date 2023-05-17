@@ -4,6 +4,9 @@ import { useDispatch, useSelector } from 'react-redux';
 function RegisterForm() {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+
+  const [dailyGoal, setGoal] = useState(0); 
+
   const errors = useSelector((store) => store.errors);
   const dispatch = useDispatch();
 
@@ -15,6 +18,7 @@ function RegisterForm() {
       payload: {
         username: username,
         password: password,
+        dailyGoal: dailyGoal,
       },
     });
   }; // end registerUser
@@ -51,6 +55,20 @@ function RegisterForm() {
           />
         </label>
       </div>
+
+      <div>
+        <label htmlFor="dailyGoal">
+          Daily Goal
+          <input
+            type="goal"
+            name="dailyGoal"
+            value={dailyGoal}
+            required
+            onChange={(event) => setGoal(event.target.value)}
+          />
+        </label>
+      </div>
+
       <div>
         <input className="btn" type="submit" name="submit" value="Register" />
       </div>
