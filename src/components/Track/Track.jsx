@@ -20,12 +20,12 @@ const minusIntake = () => {
     setCurrentIntake(currentIntake -1); 
 }
 
-// dispatch({
-//     type: 'dailySubmission',
-//     payload: {
-//         dailySubmission: dailySubmission,
-//     },
-// });
+dispatch({
+    type: 'DAILYSUBMISSION',
+    payload: {
+        currentIntake: currentIntake,
+    },
+});
 
     return(
         <>
