@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
-import {useSelector} from 'react-redux';
+import {useSelector, useDispatch} from 'react-redux';
 
 function Track() {
+const dispatch = useDispatch(); 
 const user = useSelector((store) => store.user);
 const [currentIntake, setCurrentIntake] = useState(0);
+
 
 
 const formSubmit = (e) => {
@@ -17,6 +19,14 @@ const addIntake = () => {
 const minusIntake = () => {
     setCurrentIntake(currentIntake -1); 
 }
+
+// dispatch({
+//     type: 'dailySubmission',
+//     payload: {
+//         dailySubmission: dailySubmission,
+//     },
+// });
+
     return(
         <>
         <div>
@@ -31,7 +41,7 @@ const minusIntake = () => {
                     <input
                         type="number"
                         id="intake"
-                        value="{currentIntake}"
+                        value={currentIntake}
                         onChange={(e) => setCurrentIntake(number(e.target.value))}
                     />
                 </div>
