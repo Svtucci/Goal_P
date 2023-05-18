@@ -21,6 +21,7 @@ import LoginPage from '../LoginPage/LoginPage';
 import RegisterPage from '../RegisterPage/RegisterPage';
 
 import Track from '../Track/Track';
+import History from '../History/History';
 
 import './App.css';
 
@@ -121,6 +122,21 @@ function App() {
               // If the user is already logged in, 
               // redirect them to the /user page
               <Track />
+              :
+              // Otherwise, show the Landing page
+              <LandingPage />
+            }
+          </Route>
+
+          <Route
+            exact
+            path="/history"
+          >
+          
+            {user.id ?
+              // If the user is already logged in, 
+              // redirect them to the /user page
+              <History />
               :
               // Otherwise, show the Landing page
               <LandingPage />

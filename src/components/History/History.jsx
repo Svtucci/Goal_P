@@ -4,7 +4,7 @@ function History() {
 
     return(
         <>
-        
+        <p>HISTORY</p>
         </>
     )
 };
