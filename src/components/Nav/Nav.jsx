@@ -31,7 +31,7 @@ function Nav() {
             </Link> */}
 
             <Link className="navLink" to="/info">
-              Info Page
+              Info/Home Page
             </Link>
 
             <Link className="navLink" to="/track">

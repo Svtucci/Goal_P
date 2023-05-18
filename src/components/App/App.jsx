@@ -15,10 +15,12 @@ import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
 
 import AboutPage from '../AboutPage/AboutPage';
 import UserPage from '../UserPage/UserPage';
-import InfoPage from '../InfoPage/InfoPage';
+import HomePage from '../HomePage/HomePage';
 import LandingPage from '../LandingPage/LandingPage';
 import LoginPage from '../LoginPage/LoginPage';
 import RegisterPage from '../RegisterPage/RegisterPage';
+
+import Track from '../Track/Track.jsx'
 
 import './App.css';
 
@@ -65,7 +67,7 @@ function App() {
             exact
             path="/info"
           >
-            <InfoPage />
+            <HomePage />
           </ProtectedRoute>
 
           <Route
@@ -75,7 +77,7 @@ function App() {
             {user.id ?
               // If the user is already logged in, 
               // redirect to the /user page
-              <Redirect to="/user" />
+              <Redirect to="/info" />
               :
               // Otherwise, show the login page
               <LoginPage />
@@ -89,7 +91,7 @@ function App() {
             {user.id ?
               // If the user is already logged in, 
               // redirect them to the /user page
-              <Redirect to="/user" />
+              <Redirect to="/info" />
               :
               // Otherwise, show the registration page
               <RegisterPage />
@@ -103,7 +105,22 @@ function App() {
             {user.id ?
               // If the user is already logged in, 
               // redirect them to the /user page
-              <Redirect to="/user" />
+              <Redirect to="/info" />
+              :
+              // Otherwise, show the Landing page
+              <LandingPage />
+            }
+          </Route>
+
+          <Route
+            exact
+            path="/track"
+          >
+          
+            {user.id ?
+              // If the user is already logged in, 
+              // redirect them to the /user page
+              <Redirect to="/track" />
               :
               // Otherwise, show the Landing page
               <LandingPage />

@@ -7,13 +7,12 @@ import LogOutButton from '../LogOutButton/LogOutButton';
 // It doesn't dispatch any redux actions or display any part of redux state
 // or even care what the redux state is
 
-function InfoPage() {
+function HomePage() {
   const user = useSelector((store) => store.user);
 
 
   return (
     <div className="container">
-      <p>Info Page</p>
       <h2>Welcome, {user.username}!</h2>
       <p>Your ID is: {user.id}</p>
       <h3>Your goal is: {user.daily_goal}</h3>
@@ -23,4 +22,4 @@ function InfoPage() {
   );
 }
 
-export default InfoPage;
+export default HomePage;
