@@ -10,7 +10,14 @@ const [currentIntake, setCurrentIntake] = useState(0);
 
 const formSubmit = (e) => {
     e.preventDefault();
-}
+
+    dispatch({
+      type: 'DAILYSUBMISSION',
+      payload: {
+        currentIntake: currentIntake,
+      },
+    });
+  };
 
 const addIntake = () => {
     setCurrentIntake(currentIntake + 1);
@@ -20,12 +27,7 @@ const minusIntake = () => {
     setCurrentIntake(currentIntake -1); 
 }
 
-dispatch({
-    type: 'DAILYSUBMISSION',
-    payload: {
-        currentIntake: currentIntake,
-    },
-});
+
 
     return(
         <>
@@ -42,7 +44,7 @@ dispatch({
                         type="number"
                         id="intake"
                         value={currentIntake}
-                        onChange={(e) => setCurrentIntake(number(e.target.value))}
+                        onChange={(e) => setCurrentIntake(Number(e.target.value))}
                     />
                 </div>
                 <div>
