@@ -24,6 +24,9 @@ app.use(passport.session());
 /* Routes */
 app.use('/api/user', userRouter);
 
+// Possibly used for taking the form data and sending to DB
+app.use('/api/track', userRouter); 
+
 // Serve static files
 app.use(express.static('build'));
 

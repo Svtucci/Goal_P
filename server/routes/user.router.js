@@ -34,6 +34,20 @@ router.post('/register', (req, res, next) => {
     });
 });
 
+router.post('/track', (req,res) => {
+  const currentIntake = req.body;
+  const queryText = `INSERT INTO "entry" (amount)
+    VALUES ($1) RETURNING id`;
+    pool.query(queryText, [currentIntake]).then((result) => {
+      const insertedId = result.row[0].id;
+      console.log('SUCCESSFUL SEND TO DB', insertedId)
+      res.sendStatus(200)
+    }).catch((error) => {
+      console.log('Error in DB FORM POST', error);
+      res.sendStatus(500);
+    })
+} )
+
 // Handles login form authenticate/login POST
 // userStrategy.authenticate('local') is middleware that we run on this route
 // this middleware will run our POST if successful

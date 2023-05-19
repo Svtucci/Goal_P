@@ -4,7 +4,7 @@ import axios from 'axios';
 
 function* waterIntake(action) {
     try {
-        yield axios.post('/api/entry', action.payload);
+        yield axios.post('/api/track', action.payload);
         yield put({ type: 'SET_DAILY_INTAKE', payload: action.payload.currentIntake })
     } catch (error) {
 
