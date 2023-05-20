@@ -15,10 +15,10 @@ router.get('/', (req, res) => {
  * POST route template
  */
 router.post('/', (req,res) => {
-    const currentIntake = req.body.amount;
-    const queryText = `INSERT INTO "entry" (amount)
-      VALUES ($1) RETURNING id`;
-      pool.query(queryText, [currentIntake]).then((result) => {
+    const {currentIntake, userId} = req.body;
+    const queryText = `INSERT INTO "entry" (user_id, amount, data_date)
+      VALUES ($1, $2, current_date) RETURNING id`;
+      pool.query(queryText, [userId, currentIntake]).then((result) => {
         // const insertedId = result.row[0].id;
         console.log('SUCCESSFUL SEND TO DB')
         res.sendStatus(200)

@@ -15,6 +15,7 @@ const formSubmit = (e) => {
       type: 'DAILYSUBMISSION',
       payload: {
         currentIntake: currentIntake,
+        userId: user.id,
       },
     });
   };
