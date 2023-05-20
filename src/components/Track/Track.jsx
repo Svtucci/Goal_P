@@ -16,7 +16,7 @@ const formSubmit = (e) => {
         userId: user.id,
     }
 // Shows the data being sent on client
-    console.log('Request body:', data); 
+    console.log('Amount and UserId:', data); 
 
     dispatch({
       type: 'DAILYSUBMISSION',
@@ -25,7 +25,9 @@ const formSubmit = (e) => {
         userId: user.id,
       },
     });
+    setCurrentIntake(0);
   };
+
 
 const addIntake = () => {
     setCurrentIntake(currentIntake + 1);
@@ -67,6 +69,10 @@ const minusIntake = () => {
                     Submit
                 </button> 
             </form>
+        </div>
+
+        <div>
+
         </div>
         </>
     )
