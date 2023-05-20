@@ -4,8 +4,8 @@ import axios from 'axios';
 
 function* waterIntake(action) {
     try {
-      const { currentIntake } = action.payload;
-      yield axios.post('/api/track', { amount: currentIntake });
+      const { currentIntake, userId } = action.payload;
+      yield axios.post('/api/track', { userId, amount: currentIntake });
       yield put({ type: 'SET_DAILY_INTAKE', payload: currentIntake });
     } catch (error) {
       console.log('Water intake to DB failed', error);
