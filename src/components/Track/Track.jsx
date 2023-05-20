@@ -11,6 +11,13 @@ const [currentIntake, setCurrentIntake] = useState(0);
 const formSubmit = (e) => {
     e.preventDefault();
 
+    const data = {
+        amount: currentIntake,
+        userId: user.id,
+    }
+// Shows the data being sent on client
+    console.log('Request body:', data); 
+
     dispatch({
       type: 'DAILYSUBMISSION',
       payload: {

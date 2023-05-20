@@ -15,9 +15,12 @@ router.get('/', (req, res) => {
  * POST route template
  */
 router.post('/', (req,res) => {
-    const {currentIntake, userId} = req.body;
+    const currentIntake = req.body.amount;
+    const userId = req.body.userId;
+    // Shows the userId that will be sent to DB 
+    console.log('Received userId', userId);
     const queryText = `INSERT INTO "entry" (user_id, amount, data_date)
-      VALUES ($1, $2, current_date) RETURNING id`;
+      VALUES ($1, $2, NOW()) RETURNING id`;
       pool.query(queryText, [userId, currentIntake]).then((result) => {
         // const insertedId = result.row[0].id;
         console.log('SUCCESSFUL SEND TO DB')
@@ -26,6 +29,6 @@ router.post('/', (req,res) => {
         console.log('Error in DB FORM POST', error);
         res.sendStatus(500);
       })
-  } )
+  })
 
 module.exports = router;
