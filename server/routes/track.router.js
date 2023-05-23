@@ -8,7 +8,16 @@ const router = express.Router();
  * GET route template
  */
 router.get('/', (req, res) => {
-  // GET route code here
+  const queryText = 'SELECT * FROM "entry" WHERE data_date >= NOW() - INTERVAL \'1 month\'';
+  pool.query(queryText)
+    .then((result) => {
+      const data = result.rows;
+      res.send(data);
+    })
+    .catch((error) => {
+      console.log('Error fetching data from DB', error);
+      res.sendStatus(500);
+    });
 });
 
 /**

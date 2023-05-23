@@ -12,6 +12,8 @@ function* waterIntake(action) {
     }
   }
 
+  
+
 function* waterSubmission() {
     yield takeEvery('DAILYSUBMISSION', waterIntake);
   }
