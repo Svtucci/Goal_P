@@ -1,12 +1,12 @@
 // made with chart.saga
 
-const historyReducer = (state = [], action) => {
-    switch (action.type) {
-      case SET_HISTORY:
-        return action.payload;
-      default:
-        return state;
-    }
-  };
+// const historyReducer = (state = [], action) => {
+//     switch (action.type) {
+//       case SET_HISTORY:
+//         return action.payload;
+//       default:
+//         return state;
+//     }
+//   };
 
-export default historyReducer;
+// export default historyReducer;
