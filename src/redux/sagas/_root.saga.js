@@ -4,6 +4,7 @@ import registrationSaga from './registration.saga';
 import userSaga from './user.saga';
 import waterSubmission from './intake.saga';
 import chartSaga from './chart.saga';
+import updateGoal from './updateGoal.saga';
 
 // rootSaga is the primary saga.
 // It bundles up all of the other sagas so our project can use them.
@@ -19,5 +20,6 @@ export default function* rootSaga() {
     userSaga(), 
     waterSubmission(), 
     chartSaga(),
+    updateGoal(),
   ]);
 }

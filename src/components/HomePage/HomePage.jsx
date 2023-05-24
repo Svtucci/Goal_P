@@ -1,21 +1,50 @@
-import React from 'react';
-import {useSelector} from 'react-redux';
+import React, { useState } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import LogOutButton from '../LogOutButton/LogOutButton';
 
-// This is one of our simplest components
-// It doesn't have local state
-// It doesn't dispatch any redux actions or display any part of redux state
-// or even care what the redux state is
-
 function HomePage() {
+  const dispatch = useDispatch();
   const user = useSelector((store) => store.user);
+  const [editingGoal, setEditingGoal] = useState(false);
+  const [newGoal, setNewGoal] = useState(user.daily_goal);
 
+  const formSubmit = (e) => {
+    e.preventDefault();
+
+    dispatch({
+      type: 'UPDATE_NEW_GOAL',
+      payload: {
+        newGoal,
+        userId: user.id,
+      },
+    });
+
+    setEditingGoal(false);
+  };
 
   return (
     <div className="container">
       <h2>Welcome, {user.username}!</h2>
       <p>Your ID is: {user.id}</p>
-      <h3>Your goal is: {user.daily_goal}</h3>
+
+      {editingGoal ? (
+        <form onSubmit={formSubmit}>
+          <label>
+            New Goal:
+            <input
+              type="text"
+              value={newGoal}
+              onChange={(e) => setNewGoal(e.target.value)}
+            />
+          </label>
+          <button type="submit">Save</button>
+        </form>
+      ) : (
+        <div>
+          <h3>Your goal is: {user.daily_goal}</h3>
+          <button onClick={() => setEditingGoal(true)}>Edit</button>
+        </div>
+      )}
 
       <LogOutButton className="btn" />
     </div>
@@ -23,3 +52,6 @@ function HomePage() {
 }
 
 export default HomePage;
+
+
+// Update works only when manual refresh so far

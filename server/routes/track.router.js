@@ -42,6 +42,27 @@ router.post('/', (req,res) => {
       })
   })
 
+/**
+ * PUT route template
+ */
+  router.put('/', (req, res) => {
+    const { goal, userId } = req.body;
+    const queryText = 'UPDATE "user" SET daily_goal = $1 WHERE id = $2';
+    const values = [goal, userId];
+    pool.query(queryText, values)
+      .then(() => {
+        console.log('Goal updated successfully');
+        res.sendStatus(200);
+      })
+      .catch((error) => {
+        console.log('Error updating goal', error);
+        res.sendStatus(500);
+      });
+  });
+  
+
+
+
   router.delete('/:id', (req, res) => {
     const entryId = req.params.id;
     const userId = req.user.id;
