@@ -8,9 +8,11 @@ function HomePage() {
   const [editingGoal, setEditingGoal] = useState(false);
   const [newGoal, setNewGoal] = useState(user.daily_goal);
 
-  // useEffect(() => {
-  //   setNewGoal(user.daily_goal);
-  // }, [user.daily_goal]);
+
+  useEffect(() => {
+    dispatch({ type: 'FETCH_GOAL' });
+  });
+
 
   const formSubmit = (e) => {
     e.preventDefault();
@@ -24,7 +26,7 @@ function HomePage() {
     setEditingGoal(false);
   };
 
-
+  
 
 
 

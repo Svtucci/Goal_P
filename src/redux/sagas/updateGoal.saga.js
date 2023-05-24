@@ -13,8 +13,19 @@ function* updateGoalSaga(action) {
   }
 }
 
+function* fetchGoal() {
+    try{
+        const goal = yield axios.get('api/goal');
+        yield put ({ type: 'SET_GOAL', payload: goal});
+    } catch (error) {
+        console.log( 'Error in setting Goal: ${error}' );
+        alert('Something went wrong')
+    }
+}
+
 function* updateGoal() {
   yield takeEvery('UPDATE_NEW_GOAL', updateGoalSaga);
+  yield takeEvery('FETCH_GOAL', fetchGoal)
 }
 
 export default updateGoal;

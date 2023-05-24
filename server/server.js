@@ -10,6 +10,7 @@ const passport = require('./strategies/user.strategy');
 // Route includes
 const userRouter = require('./routes/user.router');
 const trackRouter = require('./routes/track.router');
+const goalRouter = require('./routes/goal.router'); 
 
 // Body parser middleware
 app.use(bodyParser.json());
@@ -27,6 +28,8 @@ app.use('/api/user', userRouter);
 
 // Possibly used for taking the form data and sending to DB
 app.use('/api/track', trackRouter); 
+
+app.use('/api/goal', goalRouter); 
 
 // Serve static files
 app.use(express.static('build'));
