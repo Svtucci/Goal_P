@@ -19,6 +19,15 @@ function History() {
     }
   };
 
+  const handleDelete = async (entryId) => {
+    try {
+      await axios.delete(`/api/track/${entryId}`);
+      fetchHistoryData();
+    } catch (error) {
+      console.log('Error deleting entry', error);
+    }
+  };
+
 
   const formatDate = (dateString) => {
     const date = new Date(dateString);
@@ -34,7 +43,10 @@ function History() {
       <h2>Water Consumption History</h2>
       {historyData.map((entry) => (
         <div key={entry.id}>
-          Date: {formatDate(entry.data_date)}, Amount: {entry.amount}
+        <span>
+          On {formatDate(entry.data_date)}, you drank {entry.amount} ml
+        </span>
+          <button onClick={() => handleDelete(entry.id)}>Delete Your Entry</button>
         </div>
       ))}
     </div>

@@ -42,4 +42,20 @@ router.post('/', (req,res) => {
       })
   })
 
+  router.delete('/:id', (req, res) => {
+    const entryId = req.params.id;
+    const userId = req.user.id;
+    const queryText = 'DELETE FROM "entry" WHERE id = $1 AND user_id = $2';
+    const values = [entryId, userId];
+    pool.query(queryText, values)
+      .then(() => {
+        console.log('Entry deleted successfully');
+        res.sendStatus(200);
+      })
+      .catch((error) => {
+        console.log('Error deleting entry', error);
+        res.sendStatus(500);
+      });
+  });
+
 module.exports = router;
