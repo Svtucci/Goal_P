@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import LogOutButton from '../LogOutButton/LogOutButton';
 
@@ -8,9 +8,12 @@ function HomePage() {
   const [editingGoal, setEditingGoal] = useState(false);
   const [newGoal, setNewGoal] = useState(user.daily_goal);
 
+  // useEffect(() => {
+  //   setNewGoal(user.daily_goal);
+  // }, [user.daily_goal]);
+
   const formSubmit = (e) => {
     e.preventDefault();
-
     dispatch({
       type: 'UPDATE_NEW_GOAL',
       payload: {
@@ -18,14 +21,19 @@ function HomePage() {
         userId: user.id,
       },
     });
-
     setEditingGoal(false);
   };
 
+
+
+
+
   return (
-    <div className="container">
+    <center><div className="container">
+
       <h2>Welcome, {user.username}!</h2>
-      <p>Your ID is: {user.id}</p>
+
+      {/* <p>Your ID is: {user.id}</p> */}
 
       {editingGoal ? (
         <form onSubmit={formSubmit}>
@@ -41,17 +49,22 @@ function HomePage() {
         </form>
       ) : (
         <div>
-          <h3>Your goal is: {user.daily_goal}</h3>
+
+          <h3>Your goal is: {user.daily_goal}ml</h3>
           <button onClick={() => setEditingGoal(true)}>Edit</button>
+          <p />
+
         </div>
       )}
 
       <LogOutButton className="btn" />
     </div>
+    </center>
   );
 }
 
 export default HomePage;
+
 
 
 // Update works only when manual refresh so far
