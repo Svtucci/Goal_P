@@ -8,10 +8,10 @@ const router = express.Router();
  * GET route template
  */
 router.get('/', (req, res) => {
-  const userId = req.query.userId; // Assuming the user ID is passed as a query parameter
-  console.log(userId); 
-  const queryText = 'SELECT * FROM "entry" WHERE user_id = $1 AND data_date >= NOW() - INTERVAL \'1 month\'';
-  pool.query(queryText, [userId])
+  const userId = req.user.id;
+  const queryText = 'SELECT * FROM "entry" WHERE data_date >= NOW() - INTERVAL \'1 month\' AND user_id = $1';
+  const values = [userId];
+  pool.query(queryText, values)
     .then((result) => {
       const data = result.rows;
       res.send(data);

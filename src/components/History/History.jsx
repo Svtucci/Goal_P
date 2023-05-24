@@ -20,7 +20,7 @@ function History() {
   return (
     <div>
       <h2>Water Consumption History</h2>
-     
+      {/* Render the historyData in the DOM */}
       {historyData.map((entry) => (
         <div key={entry.id}>
           Date: {entry.data_date}, Amount: {entry.amount}
@@ -31,3 +31,4 @@ function History() {
 }
 
 export default History;
+
