@@ -30,12 +30,12 @@ INSERT INTO "entry" ("user_id", "amount", "data_date")
 VALUES ($1, $2, $3);
 
 INSERT INTO "user" (username, password, daily_goal)
-    VALUES ($1, $2, $3) RETURNING id;
+VALUES ($1, $2, $3) RETURNING id;
 
 SELECT * FROM "user";
 
 INSERT INTO "entry" (user_id, amount, data_date)
-      VALUES ($1, $2, NOW()) RETURNING id;
+VALUES ($1, $2, NOW()) RETURNING id;
       
 UPDATE "user" SET daily_goal = $1 WHERE id = $2;
 

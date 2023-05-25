@@ -8,11 +8,15 @@ function HomePage() {
   const goal = useSelector((store) => store.setGoal);
   const [editingGoal, setEditingGoal] = useState(false);
   const [newGoal, setNewGoal] = useState(user.daily_goal);
-
+  
 
   // useEffect(() => {
   //   dispatch({ type: 'FETCH_GOAL' });
   // }, []);
+
+  useEffect(() => {
+    setNewGoal(user.daily_goal);
+  }, [user.daily_goal]);
 
   const formSubmit = (e) => {
     e.preventDefault();
@@ -50,7 +54,7 @@ function HomePage() {
       ) : (
         <div>
           {/* <h3>{JSON.stringify(goal.data[0].daily_goal)}</h3> */}
-          <h3>Your goal is: {user.daily_goal}ml</h3>
+          <h3>Your goal is: {newGoal}ml</h3>
           <button onClick={() => setEditingGoal(true)}>Edit</button>
           <p />
 
