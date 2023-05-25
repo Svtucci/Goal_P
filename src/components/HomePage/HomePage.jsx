@@ -5,14 +5,14 @@ import LogOutButton from '../LogOutButton/LogOutButton';
 function HomePage() {
   const dispatch = useDispatch();
   const user = useSelector((store) => store.user);
+  const goal = useSelector((store) => store.setGoal);
   const [editingGoal, setEditingGoal] = useState(false);
   const [newGoal, setNewGoal] = useState(user.daily_goal);
 
 
-  useEffect(() => {
-    dispatch({ type: 'FETCH_GOAL' });
-  });
-
+  // useEffect(() => {
+  //   dispatch({ type: 'FETCH_GOAL' });
+  // }, []);
 
   const formSubmit = (e) => {
     e.preventDefault();
@@ -26,9 +26,7 @@ function HomePage() {
     setEditingGoal(false);
   };
 
-  
-
-
+ console.log(goal)
 
   return (
     <center><div className="container">
@@ -51,7 +49,7 @@ function HomePage() {
         </form>
       ) : (
         <div>
-
+          {/* <h3>{JSON.stringify(goal.data[0].daily_goal)}</h3> */}
           <h3>Your goal is: {user.daily_goal}ml</h3>
           <button onClick={() => setEditingGoal(true)}>Edit</button>
           <p />

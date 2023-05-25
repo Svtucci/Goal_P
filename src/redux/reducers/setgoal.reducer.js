@@ -1,6 +1,7 @@
 const setGoal = (state = 0, action) => {
     switch (action.type) {
       case 'SET_GOAL':
+        console.log('Steve:', action.payload.data[0].daily_goal);
         return action.payload;
       default:
         return state;
