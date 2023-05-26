@@ -1,0 +1,12 @@
+import React from 'react';
+import { Box, CircularProgress } from '@mui/material';
+
+function LoadingBar() {
+  return (
+    <Box display='flex' justifyContent='center' alignItems='center'>
+      <CircularProgress />
+    </Box>
+  );
+}
+
+export default LoadingBar;

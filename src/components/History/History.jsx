@@ -56,36 +56,3 @@ function History() {
 export default History;
 
 
-// NEW CODE 
-
-// import React, { useEffect } from 'react';
-// import { useSelector, useDispatch } from 'react-redux';
-// import { fetchHistoryData } from './historyActions.js';
-
-// function History() {
-//   const historyData = useSelector((state) => state.history.historyData);
-//   const loading = useSelector((state) => state.history.loading);
-//   const dispatch = useDispatch();
-
-//   useEffect(() => {
-//     dispatch(fetchHistoryData());
-//   }, [dispatch]);
-
-//   if (loading) {
-//     return <div>Loading...</div>;
-//   }
-
-//   return (
-//     <div>
-//       <h2>Water Consumption History</h2>
-//       {historyData.map((entry) => (
-//         <div key={entry.id}>
-//           Date: {entry.data_date}, Amount: {entry.amount}
-//         </div>
-//       ))}
-//     </div>
-//   );
-// }
-
-// export default History;
-
