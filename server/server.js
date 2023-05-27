@@ -11,6 +11,7 @@ const passport = require('./strategies/user.strategy');
 const userRouter = require('./routes/user.router');
 const trackRouter = require('./routes/track.router');
 const goalRouter = require('./routes/goal.router'); 
+const historyRouter = require('./routes/history.router'); 
 
 // Body parser middleware
 app.use(bodyParser.json());
@@ -28,7 +29,7 @@ app.use('/api/user', userRouter);
 
 // Possibly used for taking the form data and sending to DB
 app.use('/api/track', trackRouter); 
-
+app.use('/api/history', historyRouter);
 app.use('/api/goal', goalRouter); 
 
 // Serve static files

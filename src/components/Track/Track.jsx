@@ -18,7 +18,7 @@ function Track() {
     const data = {
       amount: currentIntake,
       userId: user.id,
-      data_date: date 
+      // data_date: date 
     };
 
     console.log('Amount and UserId:', data);

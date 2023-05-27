@@ -12,7 +12,7 @@ function History() {
 
   const fetchHistoryData = async () => {
     try {
-      const response = await axios.get('/api/track');
+      const response = await axios.get('/api/history');
       setHistoryData(response.data);
     } catch (error) {
       console.log('Error fetching history data', error);
@@ -21,13 +21,12 @@ function History() {
 
   const handleDelete = async (entryId) => {
     try {
-      await axios.delete(`/api/track/${entryId}`);
+      await axios.delete(`/api/history/${entryId}`);
       fetchHistoryData();
     } catch (error) {
       console.log('Error deleting entry', error);
     }
   };
-
 
   const formatDate = (dateString) => {
     const date = new Date(dateString);
