@@ -5,7 +5,12 @@ function Track() {
   const dispatch = useDispatch();
   const user = useSelector((store) => store.user);
   const [currentIntake, setCurrentIntake] = useState(0);
+  const [totalIntake, setTotalIntake] = useState(0); // New state variable
   const [progress, setProgress] = useState(0);
+
+  useEffect(() => {
+    calculateProgress(); // Calculate progress when the component mounts
+  }, [totalIntake]);
 
   const formSubmit = (e) => {
     e.preventDefault();
@@ -13,6 +18,7 @@ function Track() {
     const data = {
       amount: currentIntake,
       userId: user.id,
+      data_date: date 
     };
 
     console.log('Amount and UserId:', data);
@@ -24,8 +30,8 @@ function Track() {
         userId: user.id,
       },
     });
+    setTotalIntake(totalIntake + currentIntake); // Update totalIntake
     setCurrentIntake(0);
-    calculateProgress(); // Update progress on submission
   };
 
   const addIntake = () => {
@@ -37,7 +43,7 @@ function Track() {
   };
 
   const calculateProgress = () => {
-    const newProgress = (currentIntake / user.daily_goal) * 100;
+    const newProgress = (totalIntake / user.daily_goal) * 100; // Calculate progress based on totalIntake
     setProgress(newProgress.toFixed(1));
   };
 
@@ -94,4 +100,5 @@ function Track() {
 }
 
 export default Track;
+
 
