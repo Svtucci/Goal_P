@@ -1,5 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+import AddCircleOutlineOutlinedIcon from '@mui/icons-material/AddCircleOutlineOutlined';
+import RemoveCircleOutlineOutlinedIcon from '@mui/icons-material/RemoveCircleOutlineOutlined';
+import { IconButton, Button } from '@mui/material';
+import './trackStyles.css'; 
 
 function Track() {
   const dispatch = useDispatch();
@@ -48,10 +52,9 @@ function Track() {
   };
 
   return (
-    <>
+    <div className="track-container">
       <div>
-        <p>TRACKING</p>
-        <h1>Daily goal for the next 30 days: {user.daily_goal}ml</h1>
+        <h1>Daily Goal: {user.daily_goal}ml</h1>
       </div>
 
       <div>
@@ -65,40 +68,38 @@ function Track() {
               onChange={(e) => setCurrentIntake(Number(e.target.value))}
             />
           </div>
-          <div>
-            <button type="button" onClick={addIntake}>
-              +
-            </button>
-            <button type="button" onClick={minusIntake}>
-              -
-            </button>
+          <div className="intake-form">
+            <IconButton type="button" onClick={addIntake}>
+              <AddCircleOutlineOutlinedIcon />
+            </IconButton>
+            <IconButton type="button" onClick={minusIntake}>
+              <RemoveCircleOutlineOutlinedIcon />
+            </IconButton>
           </div>
-          <button type="submit">Submit</button>
+          <div className="submit-button">
+            <Button type="submit" variant="outlined">Submit</Button>
+          </div>
         </form>
       </div>
 
       <div>
         <h3>Progress: {progress}%</h3>
-        <div
-          style={{
-            width: '100%',
-            backgroundColor: '#ccc',
-            height: '20px',
-          }}
-        >
+        <div className="progress-bar">
           <div
+            className="progress-bar-fill"
             style={{
               width: `${progress}%`,
-              backgroundColor: 'green',
-              height: '100%',
             }}
           ></div>
         </div>
       </div>
-    </>
+    </div>
   );
 }
 
 export default Track;
+
+
+
 
 

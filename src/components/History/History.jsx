@@ -38,6 +38,7 @@ function History() {
   };
 
   return (
+    <>
     <div>
       <h2>Water Consumption History</h2>
       {historyData.map((entry) => (
@@ -49,6 +50,10 @@ function History() {
         </div>
       ))}
     </div>
+    <div>
+      <h2>CHART:</h2>
+    </div>
+    </>
   );
 }
 
