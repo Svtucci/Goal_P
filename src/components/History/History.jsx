@@ -35,7 +35,6 @@ function History() {
     return date.toLocaleString('en-US', {
       day: 'numeric',
       month: 'short',
-      year: 'numeric',
       hour: 'numeric',
       minute: 'numeric'
     });
@@ -65,9 +64,11 @@ function History() {
     xaxis: {
       title: 'Date',
       autorange: 'reversed',
-      autorangeReversed: true
+      autorangeReversed: true,
+      tickangle: 45,
     },
     yaxis: { title: 'Amount (oz)' },
+    height: 400,
   };
 
   return (
