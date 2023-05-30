@@ -14,7 +14,6 @@ function Track() {
   const [totalIntake, setTotalIntake] = useState(0);
   const [progress, setProgress] = useState(0);
 
-
   const CustomAddIcon = styled(AddCircleOutlineOutlinedIcon)`
     color: blue;
     font-size: 24px;
@@ -67,6 +66,10 @@ function Track() {
     setCurrentIntake(currentIntake - 1);
   };
 
+  const autoFillIntake = (value) => {
+    setCurrentIntake(value);
+  };
+
   const calculateProgress = () => {
     const newProgress = (totalIntake / user.daily_goal) * 100;
     setProgress(newProgress.toFixed(1));
@@ -94,6 +97,14 @@ function Track() {
               <AddCircleOutlineOutlinedIcon />
             </IconButton>
           </div>
+          <div className="auto-fill-buttons">
+            <button type="button" onClick={() => autoFillIntake(6)}>
+              Fill 6
+            </button>
+            <button type="button" onClick={() => autoFillIntake(12)}>
+              Fill 12
+            </button>
+          </div>
           <div className="submit-button">
             <CustomButton type="submit" variant="outlined">
               Submit
@@ -104,6 +115,8 @@ function Track() {
 
       <div>
         <h3>Progress: {progress}%</h3>
+       
+
         <div className="progress-bar">
           <div
             className="progress-bar-fill"
