@@ -4,9 +4,13 @@ import './history.css';
 import { Button } from '@mui/material';
 import { styled } from '@mui/system';
 import Plot from 'react-plotly.js';
+import { useSelector } from 'react-redux'; 
 
 function History() {
   const [historyData, setHistoryData] = useState([]);
+  const goal = useSelector((store) => store.user.daily_goal)
+
+console.log(goal); 
 
   useEffect(() => {
     fetchHistoryData();
@@ -69,6 +73,21 @@ function History() {
     },
     yaxis: { title: 'Amount (oz)' },
     height: 400,
+    shapes: [
+      {
+        type: 'line',
+        xref: 'paper',
+        x0: 0,
+        x1: 1,
+        y0: goal,
+        y1: goal,
+        line: {
+          color: 'red',
+          width: 2,
+          dash: 'dash',
+        },
+      },
+    ],
   };
 
   return (
