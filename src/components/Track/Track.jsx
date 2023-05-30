@@ -85,11 +85,10 @@ function Track() {
               <RemoveCircleOutlineOutlinedIcon />
             </IconButton>
             <input
-              type="number"
+              type="text"
               id="intake"
               value={currentIntake}
               onChange={(e) => setCurrentIntake(Number(e.target.value))}
-              inputMode="Numeric"
             />
             <IconButton type="button" onClick={addIntake}>
               <AddCircleOutlineOutlinedIcon />

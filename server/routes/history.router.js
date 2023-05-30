@@ -9,7 +9,7 @@ const router = express.Router();
  */
 router.get('/', (req, res) => {
   const userId = req.user.id;
-  const queryText = 'SELECT * FROM "entry" WHERE data_date >= NOW() - INTERVAL \'1 month\' AND user_id = $1';
+  const queryText = 'SELECT * FROM "entry" WHERE data_date >= NOW() - INTERVAL \'1 month\' AND user_id = $1 ORDER BY id DESC';
   const values = [userId];
   pool.query(queryText, values)
     .then((result) => {
