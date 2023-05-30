@@ -4,13 +4,13 @@ import './history.css';
 import { Button } from '@mui/material';
 import { styled } from '@mui/system';
 import Plot from 'react-plotly.js';
-import { useSelector } from 'react-redux'; 
+import { useSelector } from 'react-redux';
 
 function History() {
   const [historyData, setHistoryData] = useState([]);
-  const goal = useSelector((store) => store.user.daily_goal)
+  const goal = useSelector((store) => store.user.daily_goal);
 
-console.log(goal); 
+  const [historyTableData, setHistoryTableData] = useState({}); // Initialize historyTableData
 
   useEffect(() => {
     fetchHistoryData();
@@ -40,8 +40,16 @@ console.log(goal);
       day: 'numeric',
       month: 'short',
       hour: 'numeric',
-      minute: 'numeric'
+      minute: 'numeric',
     });
+  };
+
+  const calculateDailyTotal = (date) => {
+    const entries = historyData.filter((entry) => {
+      const entryDate = new Date(entry.data_date);
+      return entryDate.toDateString() === date.toDateString();
+    });
+    return entries.reduce((total, entry) => total + entry.amount, 0);
   };
 
   const CustomButton = styled(Button)`
@@ -55,9 +63,29 @@ console.log(goal);
     }
   `;
 
+  useEffect(() => {
+    const groupedData = historyData.reduce((tableData, entry) => {
+      const entryDate = new Date(entry.data_date);
+      const dateKey = entryDate.toDateString();
+      if (!tableData[dateKey]) {
+        tableData[dateKey] = {
+          date: entryDate,
+          totalAmount: 0,
+          entries: [],
+        };
+      }
+      tableData[dateKey].totalAmount += entry.amount;
+      tableData[dateKey].entries.push(entry);
+      return tableData;
+    }, {});
+    setHistoryTableData(groupedData);
+  }, [historyData]);
+
   const chartData = {
-    x: historyData.map((entry) => formatDate(entry.data_date)),
-    y: historyData.map((entry) => entry.amount),
+    x: Object.values(historyTableData).map((entryGroup) =>
+      formatDate(entryGroup.date)
+    ),
+    y: Object.values(historyTableData).map((entryGroup) => entryGroup.totalAmount),
     type: 'scatter',
     mode: 'lines+markers',
     marker: { color: 'blue' },
@@ -71,7 +99,7 @@ console.log(goal);
       autorangeReversed: true,
       tickangle: 45,
     },
-    yaxis: { title: 'Amount (oz)' },
+    yaxis: { title: 'Total Amount (oz)' },
     height: 400,
     shapes: [
       {
@@ -93,7 +121,7 @@ console.log(goal);
   return (
     <>
       <h2 className="heading">Water Consumption History</h2>
-      <div className='data-table'>
+      <div className="data-table">
         <table>
           <thead>
             <tr>
@@ -103,14 +131,19 @@ console.log(goal);
             </tr>
           </thead>
           <tbody>
-            {historyData.map((entry) => (
-              <tr key={entry.id}>
-                <td>{formatDate(entry.data_date)}</td>
-                <td className="amount">{entry.amount}</td>
+            {Object.values(historyTableData).map((entryGroup) => (
+              <tr key={entryGroup.date.toISOString()}>
+                <td>{formatDate(entryGroup.date)}</td>
+                <td className="amount">{entryGroup.totalAmount}</td>
                 <td>
-                  <CustomButton onClick={() => handleDelete(entry.id)}>
-                    Delete
-                  </CustomButton>
+                  {entryGroup.entries.map((entry) => (
+                    <div key={entry.id}>
+                      <span>{entry.amount} oz</span>
+                      <CustomButton onClick={() => handleDelete(entry.id)}>
+                        Delete
+                      </CustomButton>
+                    </div>
+                  ))}
                 </td>
               </tr>
             ))}
@@ -127,6 +160,8 @@ console.log(goal);
 }
 
 export default History;
+
+
 
 
 
