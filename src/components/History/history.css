@@ -11,3 +11,10 @@
 .heading {
     text-align: center;
 }
+
+.chart-container {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    overflow-x: auto;
+  }

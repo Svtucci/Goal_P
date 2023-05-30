@@ -98,8 +98,9 @@ function History() {
           </tbody>
         </table>
       </div>
-      <div>
-        <h2>Chart:</h2>
+      <br />
+      <br />
+      <div className="chart-container">
         <Plot data={[chartData]} layout={chartLayout} />
       </div>
     </>
