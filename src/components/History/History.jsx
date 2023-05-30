@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-
-
+import './history.css';
+import { Button } from '@mui/material';
+import { styled } from '@mui/system';
 
 function History() {
   const [historyData, setHistoryData] = useState([]);
@@ -37,26 +38,53 @@ function History() {
     });
   };
 
+  const CustomButton = styled(Button)`
+    color: white;
+    background-color: red;
+    border: 1px solid white;
+
+    &:hover {
+      background-color: white;
+      color: red;
+    }
+  `;
+
   return (
     <>
-    <div>
-      <h2>Water Consumption History</h2>
-      {historyData.map((entry) => (
-        <div key={entry.id}>
-        <span>
-          On {formatDate(entry.data_date)}, you drank {entry.amount} ml
-        </span>
-          <button onClick={() => handleDelete(entry.id)}>Delete Your Entry</button>
-        </div>
-      ))}
-    </div>
-    <div>
-      <h2>CHART:</h2>
-    </div>
+      <h2 className="heading">Water Consumption History</h2>
+      <div className='data-table'>
+        <table>
+          <thead>
+            <tr>
+              <th>Date</th>
+              <th>Amount (oz)</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            {historyData.map((entry) => (
+              <tr key={entry.id}>
+                <td>{formatDate(entry.data_date)}</td>
+                <td className="amount">{entry.amount}</td>
+                <td>
+                  <CustomButton onClick={() => handleDelete(entry.id)}>
+                    Delete
+                  </CustomButton>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+      <div>
+        <h2>CHART:</h2>
+      </div>
     </>
   );
 }
 
 export default History;
+
+
 
 

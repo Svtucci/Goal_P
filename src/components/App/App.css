@@ -6,7 +6,8 @@ body,
 
 body {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  margin: 0px;
+  margin: 0;
+  background-color: #295162; /* Dark grey color */
 }
 
 img {

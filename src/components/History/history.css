@@ -1,0 +1,13 @@
+.amount {
+    text-align: center;
+}
+
+.data-table {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.heading {
+    text-align: center;
+}

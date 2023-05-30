@@ -3,18 +3,42 @@ import { useSelector, useDispatch } from 'react-redux';
 import AddCircleOutlineOutlinedIcon from '@mui/icons-material/AddCircleOutlineOutlined';
 import RemoveCircleOutlineOutlinedIcon from '@mui/icons-material/RemoveCircleOutlineOutlined';
 import { IconButton, Button } from '@mui/material';
-import './trackStyles.css'; 
+import { styled } from '@mui/system';
+import './trackStyles.css';
 
 function Track() {
   const dispatch = useDispatch();
   const user = useSelector((store) => store.user);
+  const goal = useSelector((store) => store.setGoal);
   const [currentIntake, setCurrentIntake] = useState(0);
-  const [totalIntake, setTotalIntake] = useState(0); // New state variable
+  const [totalIntake, setTotalIntake] = useState(0);
   const [progress, setProgress] = useState(0);
 
+
+  const CustomAddIcon = styled(AddCircleOutlineOutlinedIcon)`
+    color: blue;
+    font-size: 24px;
+  `;
+
+  const CustomButton = styled(Button)`
+    color: white;
+    background-color: grey;
+    border: 1px solid white;
+
+    &:hover {
+      background-color: white;
+      color: grey;
+    }
+  `;
+
   useEffect(() => {
-    calculateProgress(); // Calculate progress when the component mounts
-  }, [totalIntake]);
+    calculateProgress();
+  }, [totalIntake, goal]);
+
+  useEffect(() => {
+    setCurrentIntake(0);
+    calculateProgress();
+  }, [goal]);
 
   const formSubmit = (e) => {
     e.preventDefault();
@@ -22,10 +46,7 @@ function Track() {
     const data = {
       amount: currentIntake,
       userId: user.id,
-      // data_date: date 
     };
-
-    console.log('Amount and UserId:', data);
 
     dispatch({
       type: 'DAILYSUBMISSION',
@@ -34,7 +55,7 @@ function Track() {
         userId: user.id,
       },
     });
-    setTotalIntake(totalIntake + currentIntake); // Update totalIntake
+    setTotalIntake(totalIntake + currentIntake);
     setCurrentIntake(0);
   };
 
@@ -47,37 +68,37 @@ function Track() {
   };
 
   const calculateProgress = () => {
-    const newProgress = (totalIntake / user.daily_goal) * 100; // Calculate progress based on totalIntake
+    const newProgress = (totalIntake / user.daily_goal) * 100;
     setProgress(newProgress.toFixed(1));
   };
 
   return (
     <div className="track-container">
       <div>
-        <h1>Daily Goal: {user.daily_goal}ml</h1>
+        <h1>Daily Goal: {user.daily_goal} oz</h1>
       </div>
 
       <div>
         <form onSubmit={formSubmit}>
-          <div>
-            <label htmlFor="intake">Current Intake</label>
+          <div className="intake-form">
+            <IconButton type="button" onClick={minusIntake}>
+              <RemoveCircleOutlineOutlinedIcon />
+            </IconButton>
             <input
               type="number"
               id="intake"
               value={currentIntake}
               onChange={(e) => setCurrentIntake(Number(e.target.value))}
+              inputMode="Numeric"
             />
-          </div>
-          <div className="intake-form">
             <IconButton type="button" onClick={addIntake}>
               <AddCircleOutlineOutlinedIcon />
             </IconButton>
-            <IconButton type="button" onClick={minusIntake}>
-              <RemoveCircleOutlineOutlinedIcon />
-            </IconButton>
           </div>
           <div className="submit-button">
-            <Button type="submit" variant="outlined">Submit</Button>
+            <CustomButton type="submit" variant="outlined">
+              Submit
+            </CustomButton>
           </div>
         </form>
       </div>
@@ -98,6 +119,8 @@ function Track() {
 }
 
 export default Track;
+
+
 
 
 

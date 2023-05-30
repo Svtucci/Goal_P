@@ -50,6 +50,8 @@ router.post('/', (req,res) => {
     const values = [goal, userId];
     pool.query(queryText, values)
       .then(() => {
+        // queryText = 'SELECT * FROM "user" WHERE id = $1;'
+       
         console.log('Goal updated successfully');
         res.sendStatus(200);
       })

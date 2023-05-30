@@ -1,19 +1,18 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import LogOutButton from '../LogOutButton/LogOutButton';
-
 import LoadingBar from '../LoadingBar/LoadingBar';
+import Button from '@mui/material/Button';
+import { createTheme, ThemeProvider } from '@mui/material/styles';
 
 function HomePage() {
   const dispatch = useDispatch();
   const user = useSelector((store) => store.user);
-  const goal = useSelector((store) => store.setGoal);
+  // const goal = useSelector((store) => store.setGoal);
   const [editingGoal, setEditingGoal] = useState(false);
   const [newGoal, setNewGoal] = useState(user.daily_goal);
 
-  console.log(user.length); 
   useEffect(() => {
-    console.log('user.daily_goal:', user.daily_goal);
     setNewGoal(user.daily_goal);
   }, [user.daily_goal]);
 
@@ -29,45 +28,72 @@ function HomePage() {
     setEditingGoal(false);
   };
 
-console.log(user.length);
+  const theme = createTheme({
+    components: {
+      MuiButton: {
+        styleOverrides: {
+          root: {
+            color: 'white',
+            border: '1px solid white',
+            '&:hover': {
+              border: '1px solid white',
+            },
+          },
+          outlinedSizeMedium: {
+            padding: '8px 16px',
+            fontSize: '14px',
+          },
+        },
+      },
+    },
+  });
 
-
-const userArray = Object.keys(user);
-console.log(userArray)
   return (
-    <center>
-      {userArray.length === 0 ? (
-        <LoadingBar />
-      ) : (
-        <div className="container">
-          <h2>Welcome, {user.username}!</h2>
-          {editingGoal ? (
-            <form onSubmit={formSubmit}>
-              <label>
-                New Goal:
-                <input
-                  type="text"
-                  value={newGoal}
-                  onChange={(e) => setNewGoal(e.target.value)}
-                />
-              </label>
-              <button type="submit">Save</button>
-            </form>
-          ) : (
-            <div>
-              <h3>Your goal is: {newGoal}ml</h3>
-              <button onClick={() => setEditingGoal(true)}>Edit</button>
-              <p />
-            </div>
-          )}
-        </div>
-      )}
-      <LogOutButton className="btn" />
-    </center>
+    <ThemeProvider theme={theme}>
+      <center>
+        {Object.keys(user).length === 0 ? (
+          <LoadingBar />
+        ) : (
+          <div className="container">
+            <h2>Welcome, {user.username}!</h2>
+            {editingGoal ? (
+              <form onSubmit={formSubmit}>
+                <label>
+                  New Goal:
+                  <input
+                    type="text"
+                    value={newGoal}
+                    onChange={(e) => setNewGoal(e.target.value)}
+                  />
+                </label>
+                <Button variant="outlined" size="medium" type="submit">
+                  Save
+                </Button>
+              </form>
+            ) : (
+              <div>
+                <h3>Your goal is: {newGoal}ml</h3>
+                <Button
+                  variant="outlined"
+                  size="medium"
+                  onClick={() => setEditingGoal(true)}
+                >
+                  Update Daily Goal
+                </Button>
+                <p />
+              </div>
+            )}
+          </div>
+        )}
+        <LogOutButton className="btn" />
+      </center>
+    </ThemeProvider>
   );
-};
+}
 
 export default HomePage;
+
+
 
 
 

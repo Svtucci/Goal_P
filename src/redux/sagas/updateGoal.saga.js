@@ -8,6 +8,7 @@ function* updateGoalSaga(action) {
     const { newGoal, userId } = action.payload;
     yield axios.put('/api/track', { userId, goal: newGoal });
     yield put({ type: 'SET_NEW_GOAL', payload: newGoal });
+    // yield fetchGoal(); 
   } catch (error) {
     console.log('Goal update failed', error);
   }
