@@ -23,6 +23,7 @@ function LandingPage() {
 
       <div className="grid">
         <div className="grid-col grid-col_8">
+
           <p>
             This is Goal_P. A passion project made by Stephen Vertucci. The GOAL of this app 
             is to make tracking your water intake simple and efficient. No need to add age, height, 
@@ -39,7 +40,7 @@ function LandingPage() {
            
           </p>
         </div>
-        <div className="grid-col grid-col_4">
+        <div className="grid-col grid-col_8">
           <RegisterForm />
 
           <center>

@@ -31,10 +31,13 @@ function History() {
 
   const formatDate = (dateString) => {
     const date = new Date(dateString);
-    return date.toLocaleDateString('en-US', {
+    return date.toLocaleString('en-US', {
       day: 'numeric',
       month: 'short',
-      year: 'numeric'
+      year: 'numeric',
+      hour: 'numeric',
+      minute: 'numeric',
+      second: 'numeric'
     });
   };
 
@@ -84,6 +87,7 @@ function History() {
 }
 
 export default History;
+
 
 
 

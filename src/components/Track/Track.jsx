@@ -104,6 +104,15 @@ function Track() {
             <button type="button" onClick={() => autoFillIntake(12)}>
               Fill 12
             </button>
+            <button type="button" onClick={() => autoFillIntake(24)}>
+              Fill 24
+            </button>
+            <button type="button" onClick={() => autoFillIntake(48)}>
+              Fill 48
+            </button>
+            <button type="button" onClick={() => autoFillIntake(64)}>
+              Fill 64
+            </button>
           </div>
           <div className="submit-button">
             <CustomButton type="submit" variant="outlined">
@@ -121,7 +130,7 @@ function Track() {
           <div
             className="progress-bar-fill"
             style={{
-              width: `${progress}%`,
+              width: `${progress <= 100  ? progress : 100}%`,
             }}
           ></div>
         </div>

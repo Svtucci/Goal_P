@@ -46,3 +46,10 @@ AND user_id = $1;
 
 SELECT * FROM "user" WHERE id = $1;
 
+ALTER TABLE entry ADD COLUMN new_column timestamp;
+
+UPDATE entry SET new_column = CAST(data_date AS timestamp);
+
+ALTER TABLE entry DROP COLUMN data_date;
+
+ALTER TABLE entry RENAME COLUMN new_column TO data_date;
