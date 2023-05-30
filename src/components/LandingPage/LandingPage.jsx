@@ -25,7 +25,7 @@ function LandingPage() {
         <div className="grid-col grid-col_8">
 
           <p>
-            This is Goal_P. A passion project made by Stephen Vertucci. The GOAL of this app 
+            This is {"Goal{P}"}. A passion project made by Stephen Vertucci. The GOAL of this app 
             is to make tracking your water intake simple and efficient. No need to add age, height, 
             calories, or workout metrics. This is simply for water. You create your account, set your 
             daily goal of water you want to drink in ounces and begin to add data. 

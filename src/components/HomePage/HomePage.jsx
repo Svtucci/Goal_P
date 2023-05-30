@@ -72,7 +72,7 @@ function HomePage() {
               </form>
             ) : (
               <div>
-                <h3>Your goal is: {newGoal}ml</h3>
+                <h3>Your goal is: {newGoal}oz</h3>
                 <Button
                   variant="outlined"
                   size="medium"
