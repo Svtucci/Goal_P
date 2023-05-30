@@ -3,6 +3,7 @@ import axios from 'axios';
 import './history.css';
 import { Button } from '@mui/material';
 import { styled } from '@mui/system';
+import Plot from 'react-plotly.js';
 
 function History() {
   const [historyData, setHistoryData] = useState([]);
@@ -36,8 +37,7 @@ function History() {
       month: 'short',
       year: 'numeric',
       hour: 'numeric',
-      minute: 'numeric',
-      second: 'numeric'
+      minute: 'numeric'
     });
   };
 
@@ -51,6 +51,24 @@ function History() {
       color: red;
     }
   `;
+
+  const chartData = {
+    x: historyData.map((entry) => formatDate(entry.data_date)),
+    y: historyData.map((entry) => entry.amount),
+    type: 'scatter',
+    mode: 'lines+markers',
+    marker: { color: 'blue' },
+  };
+
+  const chartLayout = {
+    title: 'Water Consumption Chart',
+    xaxis: {
+      title: 'Date',
+      autorange: 'reversed',
+      autorangeReversed: true
+    },
+    yaxis: { title: 'Amount (oz)' },
+  };
 
   return (
     <>
@@ -80,13 +98,15 @@ function History() {
         </table>
       </div>
       <div>
-        <h2>CHART:</h2>
+        <h2>Chart:</h2>
+        <Plot data={[chartData]} layout={chartLayout} />
       </div>
     </>
   );
 }
 
 export default History;
+
 
 
 
