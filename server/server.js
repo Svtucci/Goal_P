@@ -13,6 +13,7 @@ const trackRouter = require('./routes/track.router');
 const goalRouter = require('./routes/goal.router'); 
 const historyRouter = require('./routes/history.router'); 
 
+
 // Body parser middleware
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -31,6 +32,7 @@ app.use('/api/user', userRouter);
 app.use('/api/track', trackRouter); 
 app.use('/api/history', historyRouter);
 app.use('/api/goal', goalRouter); 
+
 
 // Serve static files
 app.use(express.static('build'));

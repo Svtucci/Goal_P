@@ -159,6 +159,14 @@ function History() {
   );
 }
 
+export const calculateDailyTotal = (historyData, date) => {
+  const entries = historyData.filter((entry) => {
+    const entryDate = new Date(entry.data_date);
+    return entryDate.toDateString() === date.toDateString();
+  });
+  return entries.reduce((total, entry) => total + entry.amount, 0);
+};
+
 export default History;
 
 

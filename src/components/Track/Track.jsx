@@ -13,6 +13,7 @@ function Track() {
   const [currentIntake, setCurrentIntake] = useState(0);
   const [totalIntake, setTotalIntake] = useState(0);
   const [progress, setProgress] = useState(0);
+  const totalAmount = useSelector((state) => state.totalAmount);
 
   const CustomAddIcon = styled(AddCircleOutlineOutlinedIcon)`
     color: blue;
@@ -29,6 +30,10 @@ function Track() {
       color: grey;
     }
   `;
+
+  useEffect(() => {
+    dispatch({ type: 'FETCH_TOTAL_AMOUNT' });
+  }, [dispatch]);
 
   useEffect(() => {
     calculateProgress();
@@ -99,19 +104,19 @@ function Track() {
           </div>
           <div className="auto-fill-buttons">
             <button type="button" onClick={() => autoFillIntake(6)}>
-              Fill 6
+              Fill 6oz
             </button>
             <button type="button" onClick={() => autoFillIntake(12)}>
-              Fill 12
+              Fill 12oz
             </button>
             <button type="button" onClick={() => autoFillIntake(24)}>
-              Fill 24
+              Fill 24oz
             </button>
             <button type="button" onClick={() => autoFillIntake(48)}>
-              Fill 48
+              Fill 48oz
             </button>
             <button type="button" onClick={() => autoFillIntake(64)}>
-              Fill 64
+              Fill 64oz
             </button>
           </div>
           <div className="submit-button">
@@ -140,6 +145,9 @@ function Track() {
 }
 
 export default Track;
+
+
+
 
 
 
