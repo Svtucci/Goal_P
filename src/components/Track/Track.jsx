@@ -13,7 +13,7 @@ function Track() {
   const [currentIntake, setCurrentIntake] = useState(0);
   const [totalIntake, setTotalIntake] = useState(0);
   const [progress, setProgress] = useState(0);
-  const totalAmount = useSelector((state) => state.totalAmount);
+  // const totalAmount = useSelector((state) => state.totalAmount);
 
   const CustomAddIcon = styled(AddCircleOutlineOutlinedIcon)`
     color: blue;

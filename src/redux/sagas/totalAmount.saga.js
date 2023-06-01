@@ -4,7 +4,11 @@ import axios from 'axios';
 function* fetchTotalAmount() {
   try {
     const response = yield axios.get('/api/history');
-    yield put({ type: 'SET_TOTAL_AMOUNT', payload: response.data });
+    const totalAmount = response.data.reduce(
+      (total, entry) => total + entry.amount,
+      0
+    );
+    yield put({ type: 'SET_TOTAL_AMOUNT', payload: totalAmount });
   } catch (error) {
     console.log('Error fetching total amount', error);
   }
@@ -15,3 +19,4 @@ function* watchTotalAmount() {
 }
 
 export default watchTotalAmount;
+
