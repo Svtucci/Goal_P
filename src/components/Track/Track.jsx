@@ -13,12 +13,12 @@ function Track() {
   const [currentIntake, setCurrentIntake] = useState(0);
   const [totalIntake, setTotalIntake] = useState(0);
   const [progress, setProgress] = useState(0);
-  // const totalAmount = useSelector((state) => state.totalAmount);
 
-  const CustomAddIcon = styled(AddCircleOutlineOutlinedIcon)`
-    color: blue;
-    font-size: 24px;
-  `;
+  // const totalAmount = useSelector((state) => state.totalAmount);
+  // const CustomAddIcon = styled(AddCircleOutlineOutlinedIcon)`
+  //   color: blue;
+  //   font-size: 24px;
+  // `;
 
   const CustomButton = styled(Button)`
     color: white;
@@ -31,9 +31,9 @@ function Track() {
     }
   `;
 
-  useEffect(() => {
-    dispatch({ type: 'FETCH_TOTAL_AMOUNT' });
-  }, [dispatch]);
+  // useEffect(() => {
+  //   dispatch({ type: 'FETCH_TOTAL_AMOUNT' });
+  // }, [dispatch]);
 
   useEffect(() => {
     calculateProgress();
@@ -129,8 +129,6 @@ function Track() {
 
       <div>
         <h3>Progress: {progress}%</h3>
-       
-
         <div className="progress-bar">
           <div
             className="progress-bar-fill"

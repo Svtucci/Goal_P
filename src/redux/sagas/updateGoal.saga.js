@@ -1,6 +1,6 @@
 // updateGoal.saga.js
 
-import { put, takeEvery } from 'redux-saga/effects';
+import { put, takeEvery, takeLatest } from 'redux-saga/effects';
 import axios from 'axios';
 
 function* updateGoalSaga(action) {
@@ -26,7 +26,7 @@ function* fetchGoal() {
 
 function* updateGoal() {
   yield takeEvery('UPDATE_NEW_GOAL', updateGoalSaga);
-  yield takeEvery('FETCH_GOAL', fetchGoal)
+  yield takeLatest('FETCH_GOAL', fetchGoal)
 }
 
 export default updateGoal;
