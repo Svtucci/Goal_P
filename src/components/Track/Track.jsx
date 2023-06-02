@@ -79,6 +79,15 @@ function Track() {
     const newProgress = (totalIntake / user.daily_goal) * 100;
     setProgress(newProgress.toFixed(1));
   };
+// user.daily_goal needs to be changed toa ppear like homepage useEffect. 
+// This will update it on page load. 
+
+// const user = useSelector((store) => store.user);
+// const [newGoal, setNewGoal] = useState(user.daily_goal);
+
+// useEffect(() => {
+//   setNewGoal(user.daily_goal);
+// }, [user.daily_goal]);
 
   return (
     <div className="track-container">
