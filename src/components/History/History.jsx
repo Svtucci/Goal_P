@@ -5,12 +5,12 @@ import { Button } from '@mui/material';
 import { styled } from '@mui/system';
 import Plot from 'react-plotly.js';
 import { useSelector } from 'react-redux';
+import ClearIcon from '@mui/icons-material/Clear';
 
 function History() {
   const [historyData, setHistoryData] = useState([]);
   const goal = useSelector((store) => store.user.daily_goal);
-
-  const [historyTableData, setHistoryTableData] = useState({}); // Initialize historyTableData
+  const [historyTableData, setHistoryTableData] = useState({});
 
   useEffect(() => {
     fetchHistoryData();
@@ -99,7 +99,10 @@ function History() {
       autorangeReversed: true,
       tickangle: 45,
     },
-    yaxis: { title: 'Total Amount (oz)' },
+    yaxis: {
+      title: 'Total Amount (oz)',
+      range: [0, 100], // Set the range of the Y-axis
+    },
     height: 400,
     shapes: [
       {
@@ -127,7 +130,7 @@ function History() {
             <tr>
               <th>Date</th>
               <th>Amount (oz)</th>
-              <th></th>
+              <th>Total</th>
             </tr>
           </thead>
           <tbody>
@@ -137,11 +140,14 @@ function History() {
                 <td className="amount">{entryGroup.totalAmount}</td>
                 <td>
                   {entryGroup.entries.map((entry) => (
-                    <div key={entry.id}>
-                      <span>{entry.amount} oz</span>
-                      <CustomButton onClick={() => handleDelete(entry.id)}>
-                        Delete
-                      </CustomButton>
+                    <div key={entry.id} className="entry-row">
+                      <div className="entry-amount">{entry.amount} oz</div>
+                      <span
+                        className="delete-button"
+                        onClick={() => handleDelete(entry.id)}
+                      >
+                        <ClearIcon />
+                      </span>
                     </div>
                   ))}
                 </td>
@@ -168,6 +174,7 @@ export const calculateDailyTotal = (historyData, date) => {
 };
 
 export default History;
+
 
 
 
