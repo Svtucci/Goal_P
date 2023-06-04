@@ -3,9 +3,11 @@ import { useSelector, useDispatch } from 'react-redux';
 import AddCircleOutlineOutlinedIcon from '@mui/icons-material/AddCircleOutlineOutlined';
 import RemoveCircleOutlineOutlinedIcon from '@mui/icons-material/RemoveCircleOutlineOutlined';
 import LocalDrinkOutlinedIcon from '@mui/icons-material/LocalDrinkOutlined';
-import { IconButton, Button } from '@mui/material';
+import { IconButton, Button, colors } from '@mui/material';
 import { styled } from '@mui/system';
 import './trackStyles.css';
+import WaterDropIcon from '@mui/icons-material/WaterDrop';
+import { Water } from '@mui/icons-material';
 
 function Track() {
   const dispatch = useDispatch();
@@ -23,7 +25,7 @@ function Track() {
 
   const CustomIconButton = styled(IconButton)`
     color: white;
-    background-color: grey;
+    background-color: darkblue;
     border: 1px solid white;
 
     &:hover {
@@ -113,21 +115,56 @@ function Track() {
             </IconButton>
           </div>
           <div className="auto-fill-buttons">
-            <button type="button" onClick={() => autoFillIntake(6)}>
-              Fill 6oz
-            </button>
-            <button type="button" onClick={() => autoFillIntake(12)}>
-              Fill 12oz
-            </button>
-            <button type="button" onClick={() => autoFillIntake(24)}>
-              Fill 24oz
-            </button>
-            <button type="button" onClick={() => autoFillIntake(48)}>
-              Fill 48oz
-            </button>
-            <button type="button" onClick={() => autoFillIntake(64)}>
-              Fill 64oz
-            </button>
+            <IconButton //6
+              type="button"
+              onClick={() => autoFillIntake(6)}
+              style={{ fontSize: '16px',
+                        color: 'white' }}
+            >
+              <WaterDropIcon fontSize="small" />
+              6oz
+            </IconButton>
+
+            <IconButton //12
+              type="button"
+              onClick={() => autoFillIntake(12)}
+              style={{ fontSize: '16px',
+              color: 'white' }}
+            >
+              <WaterDropIcon fontSize="small" />
+              12oz
+            </IconButton>
+
+            <IconButton // 24
+              type="button"
+              onClick={() => autoFillIntake(24)}
+              style={{ fontSize: '16px',
+              color: 'white' }}
+            >
+              <WaterDropIcon fontSize="small" />
+              24oz
+            </IconButton>
+
+            <IconButton // 36
+              type="button"
+              onClick={() => autoFillIntake(36)}
+              style={{ fontSize: '16px',
+              color: 'white' }}
+            >
+              <WaterDropIcon fontSize="small" />
+              36oz
+            </IconButton>
+
+            <IconButton //48
+              type="button"
+              onClick={() => autoFillIntake(48)}
+              style={{ fontSize: '16px',
+              color: 'white' }}
+            >
+              <WaterDropIcon fontSize="small" />
+              48oz
+            </IconButton>
+
           </div>
           <div className="submit-button">
         <CustomIconButton type="submit">

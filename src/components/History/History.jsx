@@ -83,7 +83,7 @@ function History() {
   const chartData = {
     x: Object.values(historyTableData).map((entryGroup) =>
       formatDate(entryGroup.date)
-    ),
+    ).reverse(),
     y: Object.values(historyTableData).map((entryGroup) => entryGroup.totalAmount),
     type: 'scatter',
     mode: 'lines+markers',
