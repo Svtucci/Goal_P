@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import AddCircleOutlineOutlinedIcon from '@mui/icons-material/AddCircleOutlineOutlined';
 import RemoveCircleOutlineOutlinedIcon from '@mui/icons-material/RemoveCircleOutlineOutlined';
+import LocalDrinkOutlinedIcon from '@mui/icons-material/LocalDrinkOutlined';
 import { IconButton, Button } from '@mui/material';
 import { styled } from '@mui/system';
 import './trackStyles.css';
@@ -20,7 +21,7 @@ function Track() {
   //   font-size: 24px;
   // `;
 
-  const CustomButton = styled(Button)`
+  const CustomIconButton = styled(IconButton)`
     color: white;
     background-color: grey;
     border: 1px solid white;
@@ -92,7 +93,7 @@ function Track() {
   return (
     <div className="track-container">
       <div>
-        <h1>Daily Goal: {user.daily_goal} oz</h1>
+        <h1 className='title'>Daily Goal: {user.daily_goal} oz</h1>
       </div>
 
       <div>
@@ -129,15 +130,15 @@ function Track() {
             </button>
           </div>
           <div className="submit-button">
-            <CustomButton type="submit" variant="outlined">
-              Submit
-            </CustomButton>
-          </div>
+        <CustomIconButton type="submit">
+          <LocalDrinkOutlinedIcon />
+        </CustomIconButton>
+      </div>
         </form>
       </div>
 
       <div>
-        <h3>Progress: {progress}%</h3>
+        <h3 className='progress'>Progress: {progress}%</h3>
         <div className="progress-bar">
           <div
             className="progress-bar-fill"

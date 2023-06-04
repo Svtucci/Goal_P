@@ -36,12 +36,11 @@ function History() {
 
   const formatDate = (dateString) => {
     const date = new Date(dateString);
-    return date.toLocaleString('en-US', {
+    const formattedDate = new Intl.DateTimeFormat('en-US', {
       day: 'numeric',
       month: 'short',
-      hour: 'numeric',
-      minute: 'numeric',
-    });
+    }).format(date);
+    return formattedDate;
   };
 
   const calculateDailyTotal = (date) => {
@@ -88,22 +87,51 @@ function History() {
     y: Object.values(historyTableData).map((entryGroup) => entryGroup.totalAmount),
     type: 'scatter',
     mode: 'lines+markers',
-    marker: { color: 'blue' },
+    marker: { color: 'white' },
   };
 
   const chartLayout = {
-    title: 'Water Consumption Chart',
+    title: {
+      text: '',
+      font: {
+        color: 'White',
+        size: 18,
+      },
+    },
     xaxis: {
-      title: 'Date',
-      autorange: 'reversed',
-      autorangeReversed: true,
-      tickangle: 45,
+      title: {
+        text: '',
+        font: {
+          color: 'black',
+          size: 20,
+        },
+      },
+      linecolor: 'rgba(0,0,0,0)',
+      tickangle: -45,
+      tickfont: {
+        color: 'black',
+        size: 20,
+      },
+      showgrid: false,
     },
     yaxis: {
-      title: 'Total Amount (oz)',
-      range: [0, 100], // Set the range of the Y-axis
+      title: {
+        text: 'Total Amount (oz)',
+        font: {
+          color: 'black',
+          size: 20,
+        },
+      },
+      range: [0, 100],
+      tickfont: {
+        color: 'black',
+        size: 19,
+      },
+      showgrid: false,
     },
     height: 400,
+    plot_bgcolor: '#3e7c97',
+    paper_bgcolor: '#3e7c97',
     shapes: [
       {
         type: 'line',
@@ -120,6 +148,11 @@ function History() {
       },
     ],
   };
+  
+  
+  
+  
+  
 
   return (
     <>

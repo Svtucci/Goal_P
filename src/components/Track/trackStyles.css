@@ -1,5 +1,13 @@
 /* trackStyles.css */
 
+.title {
+  color: white;
+}
+
+.progress {
+  color: white;
+}
+
 .track-container {
   display: flex;
   flex-direction: column;
