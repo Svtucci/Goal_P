@@ -4,6 +4,7 @@ import LogOutButton from '../LogOutButton/LogOutButton';
 import LoadingBar from '../LoadingBar/LoadingBar';
 import Button from '@mui/material/Button';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
+import './HomePage.css'; 
 
 function HomePage() {
   const dispatch = useDispatch();
@@ -55,7 +56,7 @@ function HomePage() {
           <LoadingBar />
         ) : (
           <div className="container">
-            <h2>Welcome, {user.username}!</h2>
+            <h2 className='user'>Welcome, {user.username}!</h2>
             {editingGoal ? (
               <form onSubmit={formSubmit}>
                 <label>
@@ -72,7 +73,7 @@ function HomePage() {
               </form>
             ) : (
               <div>
-                <h3>Your goal is: {newGoal}oz</h3>
+                <h3 className='yourGoal'>Your goal is: {newGoal}oz</h3>
                 <Button
                   variant="outlined"
                   size="medium"
