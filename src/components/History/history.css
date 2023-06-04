@@ -23,6 +23,7 @@
 .delete-button {
   color: rgb(255, 0, 0);
   cursor: pointer;
+  background-color: #000000;
   border: 1px solid #000000;
   margin-top: 2px;
 }
