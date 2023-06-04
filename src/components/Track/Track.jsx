@@ -17,11 +17,6 @@ function Track() {
   const [totalIntake, setTotalIntake] = useState(0);
   const [progress, setProgress] = useState(0);
 
-  // const totalAmount = useSelector((state) => state.totalAmount);
-  // const CustomAddIcon = styled(AddCircleOutlineOutlinedIcon)`
-  //   color: blue;
-  //   font-size: 24px;
-  // `;
 
   const CustomIconButton = styled(IconButton)`
     color: white;
@@ -33,10 +28,6 @@ function Track() {
       color: grey;
     }
   `;
-
-  // useEffect(() => {
-  //   dispatch({ type: 'FETCH_TOTAL_AMOUNT' });
-  // }, [dispatch]);
 
   useEffect(() => {
     calculateProgress();

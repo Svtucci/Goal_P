@@ -7,6 +7,7 @@ import chartSaga from './chart.saga';
 import updateGoal from './updateGoal.saga';
 import watchTotalAmount from './totalAmount.saga';
 
+
 // rootSaga is the primary saga.
 // It bundles up all of the other sagas so our project can use them.
 // This is imported in index.js as rootSaga

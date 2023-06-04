@@ -81,14 +81,18 @@ function History() {
   }, [historyData]);
 
   const chartData = {
-    x: Object.values(historyTableData).map((entryGroup) =>
-      formatDate(entryGroup.date)
-    ).reverse(),
-    y: Object.values(historyTableData).map((entryGroup) => entryGroup.totalAmount),
+    x: Object.values(historyTableData)
+      .map((entryGroup) => formatDate(entryGroup.date))
+      .reverse(), // Reverse the order of dates
+    y: Object.values(historyTableData)
+      .map((entryGroup) => entryGroup.totalAmount)
+      .reverse(), // Reverse the order of amounts
     type: 'scatter',
     mode: 'lines+markers',
     marker: { color: 'white' },
   };
+  
+  
 
   const chartLayout = {
     title: {
