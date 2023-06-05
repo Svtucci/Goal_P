@@ -83,10 +83,10 @@ function History() {
   const chartData = {
     x: Object.values(historyTableData)
       .map((entryGroup) => formatDate(entryGroup.date))
-      .reverse(), // Reverse the order of dates
+      .reverse(), 
     y: Object.values(historyTableData)
       .map((entryGroup) => entryGroup.totalAmount)
-      .reverse(), // Reverse the order of amounts
+      .reverse(), 
     type: 'scatter',
     mode: 'lines+markers',
     marker: { color: 'white' },

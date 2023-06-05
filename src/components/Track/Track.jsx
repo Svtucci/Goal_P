@@ -8,11 +8,13 @@ import { styled } from '@mui/system';
 import './trackStyles.css';
 import WaterDropIcon from '@mui/icons-material/WaterDrop';
 import { Water } from '@mui/icons-material';
+import dailySubmission from '../../redux/reducers/intake.reducer';
 
 function Track() {
   const dispatch = useDispatch();
   const user = useSelector((store) => store.user);
   const goal = useSelector((store) => store.setGoal);
+  const data = useSelector((store) => store.submissionData);
   const [currentIntake, setCurrentIntake] = useState(0);
   const [totalIntake, setTotalIntake] = useState(0);
   const [progress, setProgress] = useState(0);
@@ -29,6 +31,14 @@ function Track() {
     }
   `;
 
+// const fetchData = () => {
+//   dispatch({ type: 'FETCH_SUBMISSION' })
+// };
+
+
+console.log(data); 
+
+
   useEffect(() => {
     calculateProgress();
   }, [totalIntake, goal]);
@@ -38,14 +48,9 @@ function Track() {
     calculateProgress();
   }, [goal]);
 
+
   const formSubmit = (e) => {
     e.preventDefault();
-
-    const data = {
-      amount: currentIntake,
-      userId: user.id,
-    };
-
     dispatch({
       type: 'DAILYSUBMISSION',
       payload: {
@@ -72,16 +77,8 @@ function Track() {
   const calculateProgress = () => {
     const newProgress = (totalIntake / user.daily_goal) * 100;
     setProgress(newProgress.toFixed(1));
+    
   };
-// user.daily_goal needs to be changed toa ppear like homepage useEffect. 
-// This will update it on page load. 
-
-// const user = useSelector((store) => store.user);
-// const [newGoal, setNewGoal] = useState(user.daily_goal);
-
-// useEffect(() => {
-//   setNewGoal(user.daily_goal);
-// }, [user.daily_goal]);
 
   return (
     <div className="track-container">

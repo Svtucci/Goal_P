@@ -6,20 +6,20 @@ const router = express.Router();
 /**
  * GET route template
  */
-// router.get('/', (req, res) => {
-//   const userId = req.user.id;
-//   const queryText = 'SELECT * FROM "entry" WHERE data_date >= NOW() - INTERVAL \'1 month\' AND user_id = $1';
-//   const values = [userId];
-//   pool.query(queryText, values)
-//     .then((result) => {
-//       const data = result.rows;
-//       res.send(data);
-//     })
-//     .catch((error) => {
-//       console.log('Error fetching data from DB', error);
-//       res.sendStatus(500);
-//     });
-// });
+router.get('/', (req, res) => {
+  const userId = req.user.id;
+  const queryText = 'SELECT * FROM "entry" WHERE user_id = $1 ORDER BY data_date DESC LIMIT 1';
+  const values = [userId];
+  pool.query(queryText, values)
+    .then((result) => {
+      const data = result.rows[0]; // Retrieve the first row of data (most recent entry)
+      res.send(data);
+    })
+    .catch((error) => {
+      console.log('Error fetching data from DB', error);
+      res.sendStatus(500);
+    });
+});
 
 /**
  * POST route template

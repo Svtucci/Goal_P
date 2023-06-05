@@ -7,7 +7,7 @@ import chartReducer from './chart.reducer';
 import dailySubmission from './intake.reducer';
 import updateGoalReducer from './updategoal.reducer';
 import totalAmount from './totalAmount';
-
+import submissionData from './submission.reducer';
 
 
 // rootReducer is the primary reducer for our entire project
@@ -24,6 +24,7 @@ const rootReducer = combineReducers({
   dailySubmission,
   updateGoalReducer,
   totalAmount,
+  submissionData,
 });
 
 export default rootReducer;
