@@ -14,7 +14,9 @@ function Track() {
   const dispatch = useDispatch();
   const user = useSelector((store) => store.user);
   const goal = useSelector((store) => store.setGoal);
+
   const data = useSelector((store) => store.submissionData);
+  
   const [currentIntake, setCurrentIntake] = useState(0);
   const [totalIntake, setTotalIntake] = useState(0);
   const [progress, setProgress] = useState(0);
