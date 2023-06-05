@@ -5,6 +5,6 @@ const submissionData = (state = null, action) => {
         default:
             return state;
     }
-}
+};
 
 export default submissionData; 
