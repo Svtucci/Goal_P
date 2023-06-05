@@ -16,7 +16,7 @@ function Track() {
   const goal = useSelector((store) => store.setGoal);
 
   const data = useSelector((store) => store.submissionData);
-  
+
   const [currentIntake, setCurrentIntake] = useState(0);
   const [totalIntake, setTotalIntake] = useState(0);
   const [progress, setProgress] = useState(0);
@@ -50,7 +50,6 @@ console.log(data);
     calculateProgress();
   }, [goal]);
 
-
   const formSubmit = (e) => {
     e.preventDefault();
     dispatch({
@@ -79,7 +78,6 @@ console.log(data);
   const calculateProgress = () => {
     const newProgress = (totalIntake / user.daily_goal) * 100;
     setProgress(newProgress.toFixed(1));
-    
   };
 
   return (
