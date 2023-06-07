@@ -26,6 +26,8 @@ CREATE TABLE "entry" (
     "data_date" DATE 
 ); 
 
+
+-- Testing code 
 INSERT INTO "entry" ("user_id", "amount", "data_date")
 VALUES ($1, $2, $3);
 
@@ -45,6 +47,10 @@ SELECT * FROM "entry" WHERE data_date >= NOW() - INTERVAL '1 month'
 AND user_id = $1;
 
 SELECT * FROM "user" WHERE id = $1;
+
+
+
+-- Added to create timestamp column to organize for Chart/Graph
 
 ALTER TABLE entry ADD COLUMN new_column timestamp;
 

@@ -30,8 +30,7 @@ function LandingPage() {
             calories, or workout metrics. This is simply for water. You create your account, set your 
             daily goal of water you want to drink in ounces and begin to add data. 
           </p>
-            As you add information you can track your progress on the Track page. There you can add or subtract
-            whatever amount you would like in ounces. 
+            
           <p>
             
           </p>
