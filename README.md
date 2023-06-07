@@ -16,8 +16,8 @@ Include one or two screen shots of your project here (optional). Remove if unuse
 ### Prerequisites
 
 - [Node.js](https://nodejs.org/en/)
-- [PostgreSQL]
-- [Nodemon]
+- [PostgreSQL] (https://www.postgresql.org/)
+- [Nodemon] (https://www.npmjs.com/package/nodemon)
 
 ## Installation
 
@@ -49,14 +49,14 @@ How does someone use this application? Tell a user story here.
 ## Built With
 
 
-React w/ Redux
-Node and Epress JS
-PostGreSQL
-HTML
-CSS
-Material UI 
+- React w/ Redux
+- Node and Epress JS
+- PostGreSQL
+- HTML
+- CSS
+- Material UI 
 
-## License
+<!-- ## License -->
 <!-- [MIT](https://choosealicense.com/licenses/mit/)
 
 _Note, include this only if you have a license file. GitHub will generate one for you if you want!_ -->
