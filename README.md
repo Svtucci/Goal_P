@@ -1,9 +1,60 @@
-# GOAL{P}
-  This is Goal{P}. A passion project made by Stephen Vertucci. The GOAL of this app is to make tracking your water intake simple and efficient. No need to add age, height, calories, or workout metrics. This is simply for water. You create your account, set your daily goal of water you want to drink in ounces and begin to add data.
+# Goal{P}
+
+## Description
+
+Goal{P} is a passion project made by Stephen Vertucci. The GOAL of this app 
+is to make tracking your water intake simple and efficient. No need to add age, height, 
+calories, or workout metrics. This is simply for water. You create your account, set your 
+daily goal of water you want to drink in ounces and begin to add data. 
+
+To see the fully functional site, please visit: [DEPLOYED VERSION OF APP](www.heroku.com)
+
+<!-- ## Screen Shot
+
+Include one or two screen shots of your project here (optional). Remove if unused. -->
+
+### Prerequisites
+
+- [Node.js](https://nodejs.org/en/)
+- [PostgreSQL]
+- [Nodemon]
+
+## Installation
+
+
+1. Create a database named `goalp`,
+2. The queries in the `tables.sql` file are set up to create all the necessary tables and populate the needed data to allow the application to run correctly. You will run the two insert tables, and then the lines of code to add additional columns (This will be changed in the future). The rest of the SQL code is meant foor artificial injection of data. The project is built on [Postgres](https://www.postgresql.org/download/), so you will need to make sure to have that installed. We recommend using Postico to run those queries as that was used to create the queries, 
+3. Open up your editor of choice and run an `npm install`
+4. Run `npm run server` in your terminal
+5. Run `npm run client` in your terminal
+6. The `npm run client` command will open up a new browser tab for you!
+
+## Usage
+How does someone use this application? Tell a user story here.
+
+1. So to begin someone would use the app by creating an account on the login screen
+  - They will create a username, password, and 
+2. 
 
 
 
+## Built With
 
+List technologies and frameworks here
+
+
+
+## License
+<!-- [MIT](https://choosealicense.com/licenses/mit/)
+
+_Note, include this only if you have a license file. GitHub will generate one for you if you want!_ -->
+
+## Acknowledgement
+Thanks to [Prime Digital Academy](www.primeacademy.io) who equipped and helped me to make this application a reality.
+
+
+## Support
+If you have suggestions or issues, please email me at
 
 
 
