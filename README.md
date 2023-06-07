@@ -33,8 +33,15 @@ Include one or two screen shots of your project here (optional). Remove if unuse
 How does someone use this application? Tell a user story here.
 
 1. So to begin someone would use the app by creating an account on the login screen
-  - They will create a username, password, and 
-2. 
+  - They will create a username, password, and set their daily goal of water to drink in OZ
+2. Once they create their accounrtthey will be brought to the account screen, here they can change their daily amount if needed
+3. To begin tracking water intake the User will navigate to the Track page on the navbar
+4. Once here they can enter whatever amount of water in OZ to add. Simply press the quick inputs or + and - signs and then hit the cup icon
+5. When you see the progress bar add or subtract that means your submission is complete
+6. To look at their History, the User will navigate to the History component
+7. Here They can see their compiled data in a chart and graph
+  - The Chart will allow Users to delete submissions they added in error or if they just want to remove
+  - The graph will show their daily goal as a dotted red-line, and then plot point for each day's total water intake
 
 
 
