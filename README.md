@@ -1,7 +1,5 @@
 # Goal{P}
 
-## Description
-
 Goal{P} is a passion project made by Stephen Vertucci. The GOAL of this app 
 is to make tracking your water intake simple and efficient. No need to add age, height, 
 calories, or workout metrics. This is simply for water. You create your account, set your 
@@ -21,14 +19,16 @@ Include one or two screen shots of your project here (optional). Remove if unuse
 
 ## Installation
 
-
 1. Create a database named `goalp`,
-2. The queries in the `tables.sql` file are set up to create all the necessary tables and populate the needed data to allow the application to run correctly. You will run the two insert tables, and then the lines of code to add additional columns (This will be changed in the future). The rest of the SQL code is meant foor artificial injection of data. The project is built on [Postgres](https://www.postgresql.org/download/), so you will need to make sure to have that installed. We recommend using Postico to run those queries as that was used to create the queries, 
+2. The queries in the `tables.sql` file are set up to create all the necessary tables and populate the needed data to allow the application to run correctly. You will run the two insert tables, and then the lines of code to add additional columns (This will be changed in the future). The rest of the SQL code is meant foor artificial injection of data. 
+
+The project is built on [Postgres](https://www.postgresql.org/download/), so you will need to make sure to have that installed. We recommend using Postico to run those queries as that was used to create the queries, 
 3. Open up your editor of choice and run an `npm install`
-4. Run `npm run server` in your terminal
-5. Run `npm run client` in your terminal
-6. The `npm run client` command will open up a new browser tab for you!
-7. You will also have to install MUI to work on the styling
+4. Run `npm install @mui/material @emotion/react @emotion/styled` to be able to work on the styling
+5. Run `npm run server` in your terminal
+6. Run `npm run client` in your terminal
+7. The `npm run client` command will open up a new browser tab for you!
+ 
 
 ## Usage
 How does someone use this application? Tell a user story here.
@@ -45,12 +45,12 @@ How does someone use this application? Tell a user story here.
     - The graph will show their daily goal as a dotted red-line, and then plot point for each day's total water intake
 
 
-
 ## Built With
 
-
-- React w/ Redux
-- Node and Epress JS
+- Javascript 
+- React w/ Redux 
+- Node and Express 
+- Axios
 - PostGreSQL
 - HTML
 - CSS
