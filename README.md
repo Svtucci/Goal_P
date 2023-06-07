@@ -28,6 +28,7 @@ Include one or two screen shots of your project here (optional). Remove if unuse
 4. Run `npm run server` in your terminal
 5. Run `npm run client` in your terminal
 6. The `npm run client` command will open up a new browser tab for you!
+7. You will also have to install MUI to work on the styling
 
 ## Usage
 How does someone use this application? Tell a user story here.
@@ -47,9 +48,13 @@ How does someone use this application? Tell a user story here.
 
 ## Built With
 
-List technologies and frameworks here
 
-
+React w/ Redux
+Node and Epress JS
+PostGreSQL
+HTML
+CSS
+Material UI 
 
 ## License
 <!-- [MIT](https://choosealicense.com/licenses/mit/)
